@@ -1,0 +1,137 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_script"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+; ===== 背景遮罩（设置面板打开时显示） =====
+[node name="DimOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.55)
+mouse_filter = 2
+visible = false
+
+; ===== 游戏标题 =====
+[node name="TitleContainer" type="CenterContainer" parent="."]
+anchors_preset = 10
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_top = 120.0
+offset_right = 300.0
+offset_bottom = 200.0
+
+[node name="TitleLabel" type="Label" parent="TitleContainer"]
+text = "暗 夜 求 生"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1.0, 0.85, 0.3, 1.0)
+
+; ===== 菜单按钮面板 =====
+[node name="MenuContainer" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = 170.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 24.0
+offset_right = -30.0
+offset_bottom = -24.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="StartButton" type="Button" parent="MenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 48)
+text = "开 始 游 戏"
+
+[node name="SettingsButton" type="Button" parent="MenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 48)
+text = "设 置"
+
+[node name="QuitButton" type="Button" parent="MenuContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 48)
+text = "退 出 游 戏"
+
+; ===== 设置面板 =====
+[node name="SettingsPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -140.0
+offset_right = 220.0
+offset_bottom = 180.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = -30.0
+offset_bottom = -20.0
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/VBoxContainer"]
+text = "设 置"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1.0, 0.85, 0.3, 1.0)
+
+[node name="Separator" type="HSeparator" parent="SettingsPanel/VBoxContainer"]
+
+[node name="VolumeLabel" type="Label" parent="SettingsPanel/VBoxContainer"]
+text = "主音量"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.8, 0.8, 0.75, 1.0)
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+min_value = 0.0
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsPanel/VBoxContainer"]
+text = "全屏模式"
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.8, 0.8, 0.75, 1.0)
+
+[node name="Spacer" type="Control" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 8)
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/VBoxContainer"]
+custom_minimum_size = Vector2(160, 40)
+text = "关 闭"
+
+; ===== 版本号 =====
+[node name="VersionLabel" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -36.0
+offset_right = 80.0
+offset_bottom = -16.0
+text = "v0.1.0"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 0.8)

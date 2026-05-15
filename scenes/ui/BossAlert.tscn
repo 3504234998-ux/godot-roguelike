@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/boss_alert.gd" id="1_script"]
+
+[node name="BossAlert" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+; 全屏红色闪烁覆盖层
+[node name="FlashOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1.0, 0.1, 0.1, 0.0)
+mouse_filter = 2
+
+; 中间警告面板
+[node name="AlertPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -70.0
+offset_right = 220.0
+offset_bottom = 70.0
+
+[node name="MarginContainer" type="MarginContainer" parent="AlertPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = -20.0
+offset_bottom = -12.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AlertPanel/MarginContainer"]
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="TopIcon" type="Label" parent="AlertPanel/MarginContainer/VBoxContainer"]
+text = "☠ ☠ ☠"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="AlertLabel" type="Label" parent="AlertPanel/MarginContainer/VBoxContainer"]
+text = "⚠  BOSS 出 现 ！ ⚠"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1.0, 0.15, 0.15, 1.0)
+
+[node name="SubLabel" type="Label" parent="AlertPanel/MarginContainer/VBoxContainer"]
+text = "准备迎战！"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.8, 0.5, 0.5, 1.0)

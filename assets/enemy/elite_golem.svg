@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- 精英魔像：橙色方块 + 金色边框 -->
+  <rect x="3" y="3" width="26" height="26" rx="3" fill="#d08030" stroke="#ffd700" stroke-width="3"/>
+</svg>

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/enemy/boss_enemy.gd" id="1_boss_script"]
+[ext_resource type="Texture2D" path="res://assets/enemy/boos.svg" id="2_boss_tex"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_health.gd" id="3_health"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_attack.gd" id="4_attack"]
+
+[sub_resource type="CircleShape2D" id="Circle_Boss"]
+radius = 42.0
+
+[node name="Boss" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_boss_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_boss_tex")
+scale = Vector2(3.5, 3.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Circle_Boss")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+max_hp = 3000
+exp_value = 300
+
+[node name="AttackController" type="Node" parent="."]
+script = ExtResource("4_attack")
+contact_damage = 40

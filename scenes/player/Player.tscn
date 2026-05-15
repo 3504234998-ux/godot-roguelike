@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dx6ktvho8s6ni"]
+
+[ext_resource type="Script" uid="uid://wejtlpe8wy0j" path="res://scripts/player/player_controller.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://75dg2iiblik3" path="res://assets/player/火柴人.png" id="2_texture"]
+[ext_resource type="Script" path="res://scripts/weapon/weapon_manager.gd" id="3_attack_script"]
+[ext_resource type="PackedScene" path="res://scenes/bullet/Bullet.tscn" id="4_bullet_scene"]
+[ext_resource type="Script" path="res://scripts/player/player_level.gd" id="5_level_script"]
+[ext_resource type="Script" path="res://scripts/player/player_health.gd" id="6_health_script"]
+[ext_resource type="Script" path="res://scripts/player/player_hurtbox.gd" id="7_hurtbox_script"]
+[ext_resource type="Script" path="res://scripts/systems/camera_shake.gd" id="8_camera_shake"]
+[ext_resource type="Script" path="res://scripts/player/player_aim.gd" id="9_aim_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_player"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurtbox"]
+radius = 20.0
+
+[node name="Player" type="CharacterBody2D" unique_id=749188794]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=632703765]
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=949133258]
+shape = SubResource("CircleShape2D_player")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=150452212]
+
+[node name="CameraShake" type="Node" parent="Camera2D"]
+script = ExtResource("8_camera_shake")
+
+; ===== 武器朝向系统 =====
+[node name="WeaponPivot" type="Node2D" parent="."]
+script = ExtResource("9_aim_script")
+
+[node name="WeaponSprite" type="Polygon2D" parent="WeaponPivot"]
+position = Vector2(8, 0)
+color = Color(0.85, 0.85, 0.8, 1.0)
+polygon = PackedVector2Array(-2, -8, 4, -8, 4, 8, -2, 8)
+
+[node name="AimArrow" type="Polygon2D" parent="WeaponPivot"]
+position = Vector2(24, 0)
+color = Color(1.0, 0.85, 0.1, 0.9)
+polygon = PackedVector2Array(0, 0, -12, -7, -10, 0, -12, 7)
+
+[node name="Muzzle" type="Marker2D" parent="WeaponPivot"]
+
+[node name="AttackPoint" type="Marker2D" parent="."]
+
+[node name="AttackController" type="Node" parent="."]
+script = ExtResource("3_attack_script")
+bullet_scene = ExtResource("4_bullet_scene")
+
+[node name="LevelController" type="Node" parent="."]
+script = ExtResource("5_level_script")
+
+[node name="HealthController" type="Node" parent="."]
+script = ExtResource("6_health_script")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_hurtbox_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_hurtbox")

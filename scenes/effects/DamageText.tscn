@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/damage_text.gd" id="1_script"]
+
+[node name="DamageText" type="Label"]
+script = ExtResource("1_script")
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1.0, 0.9, 0.3, 1.0)
+mouse_filter = 2

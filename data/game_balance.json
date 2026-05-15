@@ -1,0 +1,62 @@
+{
+  "comment": "全局数值平衡参数 —— 修改此文件即可调整游戏难度",
+
+  "enemy_wave_scaling": {
+    "comment": "每波增加的属性倍率。公式: base_stat * (1 + multiplier * (wave - 1))",
+    "hp_multiplier": 0.06,
+    "damage_multiplier": 0.04,
+    "speed_multiplier": 0.02,
+    "exp_multiplier": 0.08
+  },
+
+  "spawn_curve": {
+    "comment": "刷怪曲线控制",
+    "spawn_interval_start": 2.0,
+    "spawn_interval_min": 0.3,
+    "interval_decay_per_wave": 0.15,
+    "spawn_count_base": 1,
+    "spawn_count_per_wave": 1,
+    "max_enemies": 100,
+    "wave_duration": 30.0
+  },
+
+  "leveling": {
+    "comment": "经验升级曲线。公式: base * pow(growth_rate, level - 1)",
+    "base_exp_required": 50,
+    "exp_growth_rate": 1.5
+  },
+
+  "boss": {
+    "comment": "Boss 属性与生成参数",
+    "hp": 3000,
+    "damage": 40,
+    "dash_speed": 300,
+    "dash_cooldown": 4.0,
+    "dash_duration": 0.5,
+    "dash_prepare_time": 0.8,
+    "spawn_time": 300,
+    "exp_value": 300
+  },
+
+  "player": {
+    "comment": "玩家初始属性",
+    "max_hp": 100,
+    "move_speed": 250,
+    "attack_damage": 10,
+    "attack_interval": 1.0,
+    "attack_range": 500,
+    "bullet_count": 1,
+    "pierce_count": 0
+  },
+
+  "upgrade_limits": {
+    "comment": "升级强化上限（超过此值后不再出现在选项中）",
+    "attack_damage": 0,
+    "attack_speed": 0,
+    "bullet_count": 10,
+    "move_speed": 0,
+    "max_hp": 0,
+    "bullet_pierce": 5,
+    "attack_range": 0
+  }
+}

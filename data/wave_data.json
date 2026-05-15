@@ -1,0 +1,51 @@
+[
+  {
+    "wave_start": 1,
+    "wave_end": 4,
+    "comment": "前期 (0~2分钟)：大量基础杂兵，少量蝙蝠",
+    "spawn_weights": {
+      "basic_enemy": 90,
+      "bat": 10
+    }
+  },
+  {
+    "wave_start": 5,
+    "wave_end": 8,
+    "comment": "中期 (2~4分钟)：加入史莱姆与精英史莱姆",
+    "spawn_weights": {
+      "basic_enemy": 40,
+      "bat": 25,
+      "slime": 25,
+      "elite_slime": 5,
+      "elite_bat": 5
+    }
+  },
+  {
+    "wave_start": 9,
+    "wave_end": 14,
+    "comment": "后期 (4~7分钟)：精英怪增多",
+    "spawn_weights": {
+      "basic_enemy": 15,
+      "bat": 20,
+      "slime": 30,
+      "golem": 15,
+      "elite_slime": 8,
+      "elite_bat": 7,
+      "elite_golem": 5
+    }
+  },
+  {
+    "wave_start": 15,
+    "wave_end": 999,
+    "comment": "终局 (7分钟+)：大量精英魔像",
+    "spawn_weights": {
+      "basic_enemy": 5,
+      "bat": 15,
+      "slime": 20,
+      "golem": 25,
+      "elite_slime": 10,
+      "elite_bat": 10,
+      "elite_golem": 15
+    }
+  }
+]

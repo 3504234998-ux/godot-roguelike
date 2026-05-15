@@ -1,0 +1,82 @@
+[
+  {
+    "id": "attack_damage",
+    "name": "攻击力提升",
+    "description": "子弹伤害 +{value}%",
+    "type": "stat",
+    "target": "attack_damage",
+    "value": 20,
+    "operation": "percent_increase",
+    "rarity": "common"
+  },
+  {
+    "id": "attack_speed",
+    "name": "攻速提升",
+    "description": "攻击速度 +{value}%",
+    "type": "stat",
+    "target": "attack_speed",
+    "value": 15,
+    "operation": "percent_increase",
+    "rarity": "common"
+  },
+  {
+    "id": "bullet_count",
+    "name": "额外弹幕",
+    "description": "子弹数量 +{value}",
+    "type": "stat",
+    "target": "bullet_count",
+    "value": 1,
+    "operation": "add",
+    "rarity": "rare"
+  },
+  {
+    "id": "move_speed",
+    "name": "移速提升",
+    "description": "移动速度 +{value}%",
+    "type": "stat",
+    "target": "move_speed",
+    "value": 15,
+    "operation": "percent_increase",
+    "rarity": "common"
+  },
+  {
+    "id": "max_hp",
+    "name": "生命上限",
+    "description": "最大生命值 +{value}",
+    "type": "stat",
+    "target": "max_hp",
+    "value": 20,
+    "operation": "add",
+    "rarity": "common"
+  },
+  {
+    "id": "bullet_pierce",
+    "name": "子弹穿透",
+    "description": "子弹穿透 +{value} 个敌人",
+    "type": "stat",
+    "target": "bullet_pierce",
+    "value": 1,
+    "operation": "add",
+    "rarity": "rare"
+  },
+  {
+    "id": "bullet_speed",
+    "name": "子弹速度",
+    "description": "子弹速度 +{value}%",
+    "type": "stat",
+    "target": "bullet_speed",
+    "value": 10,
+    "operation": "percent_increase",
+    "rarity": "common"
+  },
+  {
+    "id": "heal",
+    "name": "生命恢复",
+    "description": "立即恢复 {value}% 生命值",
+    "type": "instant",
+    "target": "heal",
+    "value": 30,
+    "operation": "percent_heal",
+    "rarity": "common"
+  }
+]

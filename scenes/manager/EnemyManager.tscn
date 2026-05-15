@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/manager/enemy_manager.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/Enemy.tscn" id="2_enemy_scene"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/Boss.tscn" id="3_boss_scene"]
+[ext_resource type="PackedScene" path="res://scenes/effects/DamageText.tscn" id="4_damage_text"]
+[ext_resource type="PackedScene" path="res://scenes/effects/DeathParticle.tscn" id="5_death_particle"]
+
+[node name="EnemyManager" type="Node2D"]
+script = ExtResource("1_script")
+enemy_scene = ExtResource("2_enemy_scene")
+boss_scene = ExtResource("3_boss_scene")
+damage_text_scene = ExtResource("4_damage_text")
+death_particle_scene = ExtResource("5_death_particle")
+
+[node name="SpawnTimer" type="Timer" parent="."]

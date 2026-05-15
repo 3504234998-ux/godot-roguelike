@@ -1,0 +1,38 @@
+{
+  "pistol": {
+    "id": "pistol",
+    "name": "手枪",
+    "damage": 20,
+    "fire_rate": 2.5,
+    "bullet_count": 1,
+    "spread_angle": 3.0,
+    "pierce_count": 0,
+    "bullet_speed": 600.0,
+    "weapon_class": "Pistol",
+    "description": "稳定单发，适合中远距离"
+  },
+  "shotgun": {
+    "id": "shotgun",
+    "name": "散弹枪",
+    "damage": 12,
+    "fire_rate": 1.2,
+    "bullet_count": 5,
+    "spread_angle": 40.0,
+    "pierce_count": 1,
+    "bullet_speed": 450.0,
+    "weapon_class": "Shotgun",
+    "description": "扇形散射，近距离高伤"
+  },
+  "laser_weapon": {
+    "id": "laser_weapon",
+    "name": "激光枪",
+    "damage": 8,
+    "fire_rate": 8.0,
+    "bullet_count": 1,
+    "spread_angle": 1.0,
+    "pierce_count": 5,
+    "bullet_speed": 800.0,
+    "weapon_class": "LaserWeapon",
+    "description": "高速穿透，持续输出"
+  }
+}

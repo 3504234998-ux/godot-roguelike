@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://degibdvm2eoix"]
+
+[ext_resource type="Script" uid="uid://cgl13oo2m0oft" path="res://scripts/systems/exp_orb.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://ym0d141o3qxw" path="res://assets/effects/exp_orb_placeholder.svg" id="2_67ba8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orb"]
+radius = 8.0
+
+[node name="ExpOrb" type="Area2D" unique_id=479351476]
+collision_layer = 8
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1870935822]
+texture = ExtResource("2_67ba8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1798247599]
+shape = SubResource("CircleShape2D_orb")

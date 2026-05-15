@@ -1,0 +1,158 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/upgrade_ui.gd" id="1_script"]
+
+[node name="UpgradeUI" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+
+[node name="UpgradePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -200.0
+offset_right = 380.0
+offset_bottom = 200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpgradePanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = -16.0
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UpgradePanel/VBoxContainer"]
+unique_name_in_owner = true
+text = "✦  升 级！选 择 一 个 强 化  ✦"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1.0, 0.9, 0.3, 1.0)
+
+[node name="OptionsContainer" type="HBoxContainer" parent="UpgradePanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+; ===== 选项1 =====
+[node name="Option1" type="Button" parent="UpgradePanel/VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(210, 0)
+
+[node name="VBoxMargin" type="MarginContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option1"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ContentBox" type="VBoxContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option1/VBoxMargin"]
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="IconRect" type="ColorRect" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option1/VBoxMargin/ContentBox"]
+custom_minimum_size = Vector2(0, 48)
+color = Color(0.5, 0.5, 0.5, 1.0)
+
+[node name="NameLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option1/VBoxMargin/ContentBox"]
+text = "强化名称"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 17
+
+[node name="DescLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option1/VBoxMargin/ContentBox"]
+text = "强化描述"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.65, 0.65, 0.65, 1.0)
+
+; ===== 选项2 =====
+[node name="Option2" type="Button" parent="UpgradePanel/VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(210, 0)
+
+[node name="VBoxMargin" type="MarginContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ContentBox" type="VBoxContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option2/VBoxMargin"]
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="IconRect" type="ColorRect" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option2/VBoxMargin/ContentBox"]
+custom_minimum_size = Vector2(0, 48)
+color = Color(0.5, 0.5, 0.5, 1.0)
+
+[node name="NameLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option2/VBoxMargin/ContentBox"]
+text = "强化名称"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 17
+
+[node name="DescLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option2/VBoxMargin/ContentBox"]
+text = "强化描述"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.65, 0.65, 0.65, 1.0)
+
+; ===== 选项3 =====
+[node name="Option3" type="Button" parent="UpgradePanel/VBoxContainer/OptionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_minimum_size = Vector2(210, 0)
+
+[node name="VBoxMargin" type="MarginContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option3"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ContentBox" type="VBoxContainer" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option3/VBoxMargin"]
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="IconRect" type="ColorRect" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option3/VBoxMargin/ContentBox"]
+custom_minimum_size = Vector2(0, 48)
+color = Color(0.5, 0.5, 0.5, 1.0)
+
+[node name="NameLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option3/VBoxMargin/ContentBox"]
+text = "强化名称"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 17
+
+[node name="DescLabel" type="Label" parent="UpgradePanel/VBoxContainer/OptionsContainer/Option3/VBoxMargin/ContentBox"]
+text = "强化描述"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.65, 0.65, 0.65, 1.0)

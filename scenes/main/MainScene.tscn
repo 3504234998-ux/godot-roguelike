@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dv8rh3ipy4tch"]
+
+[ext_resource type="PackedScene" uid="uid://dx6ktvho8s6ni" path="res://scenes/player/Player.tscn" id="1_player_scene"]
+[ext_resource type="PackedScene" path="res://scenes/manager/EnemyManager.tscn" id="2_manager_scene"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="3_hud_scene"]
+[ext_resource type="Script" uid="uid://ceddm7osagvn8" path="res://scripts/manager/upgrade_manager.gd" id="4_upgrade_mgr"]
+[ext_resource type="PackedScene" path="res://scenes/ui/UpgradeUI.tscn" id="5_upgrade_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BossAlert.tscn" id="6_boss_alert"]
+[ext_resource type="PackedScene" path="res://scenes/ui/BossHealthBarUI.tscn" id="7_boss_hp_bar"]
+[ext_resource type="PackedScene" path="res://scenes/ui/DebugOverlay.tscn" id="8_debug_overlay"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="9_pause_menu"]
+[ext_resource type="PackedScene" path="res://scenes/ui/GameOverUI.tscn" id="10_game_over_ui"]
+
+[node name="Main" type="Node2D" unique_id=425405967]
+
+[node name="GridH" type="Line2D" parent="." unique_id=1656642401]
+points = PackedVector2Array(-2000, 0, 2000, 0)
+width = 2.0
+default_color = Color(0.35, 0.35, 0.35, 0.6)
+
+[node name="GridV" type="Line2D" parent="." unique_id=1015392309]
+points = PackedVector2Array(0, -2000, 0, 2000)
+width = 2.0
+default_color = Color(0.35, 0.35, 0.35, 0.6)
+
+[node name="MarkerRight" type="Polygon2D" parent="." unique_id=1646281357]
+position = Vector2(300, 0)
+color = Color(1, 0.3, 0.3, 0.7)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="MarkerLeft" type="Polygon2D" parent="." unique_id=1716486469]
+position = Vector2(-300, 0)
+color = Color(0.3, 0.3, 1, 0.7)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="MarkerDown" type="Polygon2D" parent="." unique_id=1270323451]
+position = Vector2(0, 300)
+color = Color(0.3, 1, 0.3, 0.7)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="MarkerUp" type="Polygon2D" parent="." unique_id=737642956]
+position = Vector2(0, -300)
+color = Color(1, 1, 0.3, 0.7)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="Player" parent="." unique_id=2073065090 instance=ExtResource("1_player_scene")]
+
+[node name="EnemyManager" parent="." unique_id=941491954 instance=ExtResource("2_manager_scene")]
+
+[node name="HUD" parent="." unique_id=1306683018 instance=ExtResource("3_hud_scene")]
+
+[node name="UpgradeManager" type="Node" parent="." unique_id=2822688]
+script = ExtResource("4_upgrade_mgr")
+
+[node name="UpgradeUI" parent="." unique_id=306797453 instance=ExtResource("5_upgrade_ui")]
+
+[node name="BossAlert" parent="." unique_id=1015687273 instance=ExtResource("6_boss_alert")]
+
+[node name="BossHealthBarUI" parent="." unique_id=1634341284 instance=ExtResource("7_boss_hp_bar")]
+
+[node name="DebugOverlay" parent="." unique_id=2010796789 instance=ExtResource("8_debug_overlay")]
+
+[node name="PauseMenu" parent="." unique_id=531104972 instance=ExtResource("9_pause_menu")]
+
+[node name="GameOverUI" parent="." unique_id=678316117 instance=ExtResource("10_game_over_ui")]

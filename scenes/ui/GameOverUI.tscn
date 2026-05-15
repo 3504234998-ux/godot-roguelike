@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_ui.gd" id="1_script"]
+
+[node name="GameOverUI" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.02, 0.02, 0.85)
+
+[node name="CenterPanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = 180.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = -24.0
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterPanel/VBoxContainer"]
+text = "游戏结束"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1.0, 0.25, 0.25, 1.0)
+
+[node name="Separator1" type="HSeparator" parent="CenterPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+
+[node name="StatsContainer" type="VBoxContainer" parent="CenterPanel/VBoxContainer"]
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TimeLabel" type="Label" parent="CenterPanel/VBoxContainer/StatsContainer"]
+text = "存活时间: 00:00"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.85, 0.8, 1.0)
+
+[node name="KillLabel" type="Label" parent="CenterPanel/VBoxContainer/StatsContainer"]
+text = "击杀敌人: 0"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.7, 0.65, 1.0)
+
+[node name="LevelLabel" type="Label" parent="CenterPanel/VBoxContainer/StatsContainer"]
+text = "最终等级: 1"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.7, 0.65, 1.0)
+
+[node name="Separator2" type="HSeparator" parent="CenterPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+
+[node name="RestartButton" type="Button" parent="CenterPanel/VBoxContainer"]
+custom_minimum_size = Vector2(180, 44)
+text = "重新开始"
+
+[node name="QuitButton" type="Button" parent="CenterPanel/VBoxContainer"]
+custom_minimum_size = Vector2(180, 44)
+text = "返回主菜单"

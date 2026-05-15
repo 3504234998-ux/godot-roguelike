@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/debug_overlay.gd" id="1_script"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+script = ExtResource("1_script")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -220.0
+offset_top = 48.0
+offset_right = -4.0
+offset_bottom = 200.0
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = -4.0
+theme_override_constants/separation = 2
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+text = "[DEBUG] 按 F1 关闭"
+theme_override_colors/font_color = Color(1.0, 1.0, 0.3, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="FPS" type="Label" parent="Panel/VBox"]
+text = "FPS: --"
+theme_override_font_sizes/font_size = 11
+
+[node name="Wave" type="Label" parent="Panel/VBox"]
+text = "波次: --"
+theme_override_font_sizes/font_size = 11
+
+[node name="EnemyCount" type="Label" parent="Panel/VBox"]
+text = "敌人数: --"
+theme_override_font_sizes/font_size = 11
+
+[node name="Level" type="Label" parent="Panel/VBox"]
+text = "等级: --"
+theme_override_font_sizes/font_size = 11
+
+[node name="Stats" type="Label" parent="Panel/VBox"]
+text = "伤害: --"
+theme_override_font_sizes/font_size = 11
+
+[node name="Pools" type="Label" parent="Panel/VBox"]
+text = "池: --"
+theme_override_font_sizes/font_size = 11

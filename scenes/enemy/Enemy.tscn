@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bgull1xrycg6i"]
+
+[ext_resource type="Script" uid="uid://c3vm86ixxdap6" path="res://scripts/enemy/enemy_controller.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/enemy/basic.svg" id="2_texture"]
+[ext_resource type="Script" uid="uid://c26agdd2y6j2c" path="res://scripts/enemy/enemy_health.gd" id="3_health_script"]
+[ext_resource type="PackedScene" uid="uid://degibdvm2eoix" path="res://scenes/pickup/ExpOrb.tscn" id="4_orb_scene"]
+[ext_resource type="Script" uid="uid://bxnjqloaihls1" path="res://scripts/enemy/enemy_attack.gd" id="5_attack_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
+radius = 14.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1334536954]
+collision_layer = 2
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=669303746]
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=388707684]
+shape = SubResource("CircleShape2D_enemy")
+
+[node name="Health" type="Node" parent="." unique_id=1005495071]
+script = ExtResource("3_health_script")
+max_hp = null
+exp_orb_scene = ExtResource("4_orb_scene")
+exp_value = null
+
+[node name="AttackController" type="Node" parent="." unique_id=926895851]
+script = ExtResource("5_attack_script")

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <!-- 经验球占位图标：绿色发光圆形 -->
+  <circle cx="8" cy="8" r="6" fill="#44ee44" stroke="#ffffff" stroke-width="1.5"/>
+  <text x="8" y="11" text-anchor="middle" font-size="7" fill="#ffffff" font-weight="bold">E</text>
+</svg>
