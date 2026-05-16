@@ -24,6 +24,7 @@ GameManager="*res://scripts/manager/game_manager.gd"
 DataManager="*res://scripts/manager/data_manager.gd"
 ObjectPoolManager="*res://scripts/manager/object_pool_manager.gd"
 AudioManager="*res://scripts/manager/audio_manager.gd"
+SaveManager="*res://scripts/systems/save_manager.gd"
 
 [display]
 

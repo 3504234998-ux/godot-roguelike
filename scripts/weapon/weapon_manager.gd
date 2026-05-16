@@ -258,3 +258,65 @@ func increase_damage(amount: int) -> void:
 		if w:
 			w.damage += amount
 	print("[WeaponManager] 所有武器伤害 +%d" % amount)
+
+
+# ============================================================
+# 存档接口
+# ============================================================
+
+func get_weapon_save_data() -> Array:
+	## 获取所有武器槽位的存档数据（null 表示空槽位）
+	var data: Array = []
+	for w in _weapon_slots:
+		if w:
+			data.append({
+				"id": w.weapon_id,
+				"damage": w.damage,
+				"fire_rate": w.fire_rate,
+				"bullet_count": w.bullet_count,
+				"pierce_count": w.pierce_count,
+				"bullet_speed": w.bullet_speed,
+			})
+		else:
+			data.append(null)
+	return data
+
+
+func restore_weapons(weapons_data: Array) -> void:
+	## 从存档数据恢复武器槽位
+	# 先清除所有现有武器
+	for i in range(_weapon_slots.size()):
+		if _weapon_slots[i]:
+			_weapon_slots[i].queue_free()
+			_weapon_slots[i] = null
+
+	# 按存档数据重新装备
+	for i in range(mini(weapons_data.size(), _weapon_slots.size())):
+		var wdata = weapons_data[i]
+		if wdata == null or typeof(wdata) != TYPE_DICTIONARY:
+			continue
+		var weapon_id: String = wdata.get("id", "")
+		if weapon_id.is_empty():
+			continue
+
+		# 加载基础配置（获取 weapon_class 等元数据）
+		var cfg: Dictionary = _load_weapon_config(weapon_id)
+		if cfg.is_empty():
+			continue
+
+		# 用存档数据覆盖武器属性
+		cfg["damage"] = wdata.get("damage", cfg.get("damage", 10))
+		cfg["fire_rate"] = wdata.get("fire_rate", cfg.get("fire_rate", 2.0))
+		cfg["bullet_count"] = wdata.get("bullet_count", cfg.get("bullet_count", 1))
+		cfg["pierce_count"] = wdata.get("pierce_count", cfg.get("pierce_count", 0))
+		cfg["bullet_speed"] = wdata.get("bullet_speed", cfg.get("bullet_speed", 500.0))
+
+		_equip_weapon(i, cfg)
+
+	# 切换到第一个有效武器
+	for i in range(_weapon_slots.size()):
+		if _weapon_slots[i]:
+			_current_index = i
+			break
+
+	print("[WeaponManager] 已从存档恢复 %d 个武器" % weapons_data.size())

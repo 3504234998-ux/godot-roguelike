@@ -30,6 +30,9 @@ signal upgrade_applied(upgrade_id: String, upgrade_name: String)
 ## 待处理的升级次数（支持连续多次升级排队）
 var _pending_count: int = 0
 
+## 已应用的升级 ID 列表（供存档系统查询）
+var _applied_upgrades: Array = []
+
 ## 玩家引用（缓存）
 var _player: Node = null
 
@@ -128,9 +131,28 @@ func _pick_random(count: int) -> Array:
 # ============================================================
 
 func apply_upgrade(upgrade_data: Dictionary) -> void:
-	## 应用一个升级效果
+	## 应用一个升级效果（正常游戏流程，带 UI 处理）
+	_apply_upgrade_effect(upgrade_data)
+	_applied_upgrades.append(upgrade_data.get("id", ""))
+
+	upgrade_applied.emit(upgrade_data.get("id", ""), upgrade_data.get("name", ""))
+	print("[UpgradeManager] 已应用升级: %s (target=%s, value=%s, op=%s)" % [upgrade_data.get("name", ""), upgrade_data.get("target", ""), upgrade_data.get("value", 0), upgrade_data.get("operation", "")])
+
+	# 处理升级队列
+	_pending_count -= 1
+	if _pending_count > 0:
+		_show_options()
+	else:
+		# 无待处理升级：关闭 UI → 恢复游戏
+		if _upgrade_ui and _upgrade_ui.has_method("hide_options"):
+			_upgrade_ui.hide_options()
+		GameManager.is_upgrading = false
+		GameManager.resume_game()
+
+
+func _apply_upgrade_effect(upgrade_data: Dictionary) -> void:
+	## 仅应用升级效果（不处理 UI / 队列 / 信号），供正常流程和存档恢复共用
 	if _player == null:
-		# 重新尝试查找玩家
 		var players := get_tree().get_nodes_in_group("player")
 		if players.is_empty():
 			push_error("[UpgradeManager] 无法应用升级：未找到玩家")
@@ -140,8 +162,6 @@ func apply_upgrade(upgrade_data: Dictionary) -> void:
 	var target: String = upgrade_data.get("target", "")
 	var value = upgrade_data.get("value", 0)
 	var operation: String = upgrade_data.get("operation", "")
-	var upgrade_id: String = upgrade_data.get("id", "")
-	var upgrade_name: String = upgrade_data.get("name", "")
 
 	match target:
 		"attack_damage":
@@ -162,20 +182,6 @@ func apply_upgrade(upgrade_data: Dictionary) -> void:
 			_apply_heal(value, operation)
 		_:
 			push_warning("[UpgradeManager] 未知的升级目标: %s" % target)
-
-	upgrade_applied.emit(upgrade_id, upgrade_name)
-	print("[UpgradeManager] 已应用升级: %s (target=%s, value=%s, op=%s)" % [upgrade_name, target, value, operation])
-
-	# 处理升级队列
-	_pending_count -= 1
-	if _pending_count > 0:
-		_show_options()
-	else:
-		# 无待处理升级：关闭 UI → 恢复游戏
-		if _upgrade_ui and _upgrade_ui.has_method("hide_options"):
-			_upgrade_ui.hide_options()
-		GameManager.is_upgrading = false
-		GameManager.resume_game()
 
 
 # ============================================================
@@ -290,6 +296,30 @@ func _apply_heal(value, operation: String) -> void:
 			var heal_amount: int = int(ctrl.max_hp * value / 100.0)
 			if ctrl.has_method("heal"):
 				ctrl.heal(heal_amount)
+
+
+# ============================================================
+# 存档接口
+# ============================================================
+
+func get_applied_upgrades() -> Array:
+	## 获取已应用的升级 ID 列表（供存档系统查询）
+	return _applied_upgrades.duplicate()
+
+
+func restore_upgrades(upgrade_ids: Array) -> void:
+	## 从存档恢复：根据 ID 列表逐项重新应用升级效果
+	_applied_upgrades.clear()
+
+	for upgrade_id in upgrade_ids:
+		var upgrade_data: Dictionary = DataManager.get_upgrade_by_id(upgrade_id)
+		if upgrade_data.is_empty():
+			push_warning("[UpgradeManager] 恢复升级失败：未找到升级数据 '%s'" % upgrade_id)
+			continue
+		_apply_upgrade_effect(upgrade_data)
+		_applied_upgrades.append(upgrade_id)
+
+	print("[UpgradeManager] 已从存档恢复 %d 项升级" % _applied_upgrades.size())
 
 
 # ============================================================

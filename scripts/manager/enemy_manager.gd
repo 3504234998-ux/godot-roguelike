@@ -483,3 +483,12 @@ func set_spawn_paused(paused: bool) -> void:
 		_spawn_timer.stop()
 	else:
 		_spawn_timer.start()
+
+
+func set_wave_for_restore(target_wave: int) -> void:
+	## 从存档恢复波次状态（由 GameManager 在场景重建后调用）
+	_current_wave = target_wave
+	_last_wave = target_wave
+	_start_time = Time.get_ticks_msec() - (target_wave - 1) * int(wave_duration * 1000.0)
+	wave_changed.emit(target_wave)
+	print("[EnemyManager] 波次已恢复为 %d" % target_wave)
